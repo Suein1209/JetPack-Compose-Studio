@@ -8,7 +8,73 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
 
-class TotoViewModel : ViewModel(){
+class TestContact(val firstName: String, val lastName: String)
+
+class TotoViewModel : ViewModel() {
+
+    private val contacts by lazy {
+        listOf(
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("A_F1", "A_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("B_F1", "B_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("C_F1", "C_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+            TestContact("D_F1", "D_L2"),
+        )
+    }
+
+    val grouped = contacts.groupBy { it.firstName[0] }
 
     private val _name = MutableStateFlow("")
     val name: StateFlow<String> = _name
@@ -24,7 +90,7 @@ class TotoViewModel : ViewModel(){
     private val _timeoutText = MutableStateFlow("Timeout!!")
     val timeoutText: StateFlow<String> = _timeoutText
 
-    suspend fun changeTimeoutText(timeoutText:String) {
+    suspend fun changeTimeoutText(timeoutText: String) {
         withContext(Dispatchers.Main) {
             _timeoutText.emit(timeoutText)
         }

@@ -4,7 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,10 +21,29 @@ import kotlinx.coroutines.launch
 
 class TotoStudyActivity : ComponentActivity() {
 
+    val viewModel : TotoViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyScreen()
+//            MyScreen()
+            ContactsList(viewModel.grouped)
+        }
+    }
+
+    @OptIn(ExperimentalFoundationApi::class)
+    @Composable
+    fun ContactsList(grouped: Map<Char, List<TestContact>>) {
+        LazyColumn {
+            grouped.forEach { (initial, contactsForInitial) ->
+                stickyHeader {
+                    Text("Header : $initial")
+                }
+
+                items(contactsForInitial) { contact ->
+                    Text("Item : $contact")
+                }
+            }
         }
     }
 
