@@ -13,21 +13,54 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class TotoStudyActivity : ComponentActivity() {
 
-    val viewModel : TotoViewModel by viewModels()
+    val viewModel: TotoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 //            MyScreen()
-            ContactsList(viewModel.grouped)
+//            ContactsList(viewModel.grouped)
+//            TwoTexts(modifier = Modifier.fillMaxWidth(), "첫번째", "두번째")
+            FavoriteFoodInput { test ->
+                Log.e("suein", "onCreate : $test")
+
+            }
+        }
+    }
+
+    @Composable
+    fun TwoTexts(modifier: Modifier = Modifier, text1: String, text2: String) {
+        Row(modifier = modifier.height(IntrinsicSize.Min)) {
+            Text(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(start = 4.dp)
+                    .wrapContentWidth(Alignment.Start),
+                text = text1
+            )
+
+            Divider(
+                color = Color.Black, modifier = Modifier
+                    .heightIn(100.dp)
+                    .width(1.dp)
+            )
+            Text(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 4.dp)
+                    .wrapContentWidth(Alignment.End),
+                text = text2
+            )
         }
     }
 
@@ -140,7 +173,7 @@ class TotoStudyActivity : ComponentActivity() {
             Log.i("composeTest", "ShowLazySnackBarButton() - timeout started!")
             try {
                 delay(3000L)
-          scaffoldState.snackbarHostState.showSnackbar(currentTimeoutText)
+                scaffoldState.snackbarHostState.showSnackbar(currentTimeoutText)
 //                scaffoldState.snackbarHostState.showSnackbar(timeoutText)
             } catch (ce: CancellationException) {
                 Log.d("composeTest", "ShowLazySnackBarButton() - canceled!")
