@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.suein.myapplication.jpub.chapter.Chapter38AnimationActivity
+import com.suein.myapplication.jpub.chapter.ch41.Chapter41TestViewModelActivity
 
 @Suppress("SpellCheckingInspection")
 class JpubHubActivity : ComponentActivity() {
@@ -31,6 +32,12 @@ class JpubHubActivity : ComponentActivity() {
                 startActivity(Intent(this@JpubHubActivity, Chapter38AnimationActivity::class.java))
             }) {
                 Text(text = "Chapter 38 상태주도 애니메이션")
+            }
+
+            Button(modifier = Modifier.padding(10.dp), onClick = {
+                startActivity(Intent(this@JpubHubActivity, Chapter41TestViewModelActivity::class.java))
+            }) {
+                Text(text = "Chapter 41 온도 입력 컴포저블 구현하기")
             }
         }
     }

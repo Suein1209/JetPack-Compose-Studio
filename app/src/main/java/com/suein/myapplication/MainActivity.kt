@@ -3,7 +3,6 @@ package com.suein.myapplication
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,14 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.suein.myapplication.jpub.JpubHubActivity
+import com.suein.myapplication.jpub.chapter.ch41.Chapter41TestViewModelActivity
 import com.suein.myapplication.toto.TotoStudyActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            StudyBooksTitleList()
-        }
+        startActivity(Intent(this, Chapter41TestViewModelActivity::class.java))
+//        setContent {
+//            StudyBooksTitleList()
+//        }
     }
 
     @Composable
