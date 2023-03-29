@@ -52,7 +52,7 @@ class Chapter38AnimationActivity : ComponentActivity() {
      * [updateTransition] - 함수를 이용하면 하나의 대상 상태를 기반으로 여러 애니메이션을 병렬로 실행 할 수 있다.
      */
     @Composable
-    fun 록() {
+    fun TransitionDemo() {
         var boxState by remember { mutableStateOf(BoxPosition.Start) }
         val transition = updateTransition(targetState = boxState, label = "My Transition")
         var screenWidth = LocalConfiguration.current.screenWidthDp.dp
