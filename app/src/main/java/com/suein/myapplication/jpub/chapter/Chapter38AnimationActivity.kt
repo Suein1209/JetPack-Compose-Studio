@@ -3,11 +3,9 @@ package com.suein.myapplication.jpub.chapter
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateColor
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -34,7 +32,6 @@ class Chapter38AnimationActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-//            MainScreen()
             ComponentList()
         }
     }
@@ -43,13 +40,67 @@ class Chapter38AnimationActivity : ComponentActivity() {
     fun ComponentList() {
         val scrollState = rememberScrollState()
         Column(Modifier.verticalScroll(scrollState)) {
+            TransitionDemo()
             MotionsDemo()
             ColorChangDemo()
             RotateDemo()
         }
     }
 
+    /**
+     * 상자가 이동하면서 색도 같이 변하는 동시에 두개의 애니메이션이 시작한다.
+     * [updateTransition] - 함수를 이용하면 하나의 대상 상태를 기반으로 여러 애니메이션을 병렬로 실행 할 수 있다.
+     */
+    @Composable
+    fun 록() {
+        var boxState by remember { mutableStateOf(BoxPosition.Start) }
+        val transition = updateTransition(targetState = boxState, label = "My Transition")
+        var screenWidth = LocalConfiguration.current.screenWidthDp.dp
+        val animatedColor: Color by transition.animateColor(
+//            transitionSpec = tween(durationMillis = 4000), //이거 안된다
+            label = "animatedColor"
+        ) { state ->
+            when (state) { // 클릭을 통해 상태가 변경되면 애니메이션으로 색을 변경한다.
+                BoxPosition.Start -> Color.Red
+                BoxPosition.End -> Color.Magenta
+            }
+        }
 
+        val animatedOffset: Dp by transition.animateDp(
+//            transitionSpec = tween(durationMillis = 4000), //이거 안된다
+            label = "animatedOffset"
+        ) { state ->
+            when (state) { //클릭을 통해 상태가 변경된다면 포지션을 옮긴다.
+                BoxPosition.Start -> 0.dp
+                BoxPosition.End -> screenWidth - 70.dp
+            }
+        }
+
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .offset(x = animatedOffset, y = 20.dp)
+                    .size(70.dp)
+                    .background(animatedColor)
+            )
+
+            Spacer(modifier = Modifier.height(50.dp))
+
+            Button(
+                onClick = {
+                    boxState = when (boxState) {
+                        BoxPosition.Start -> BoxPosition.End
+                        BoxPosition.End -> BoxPosition.Start
+                    }
+                },
+                modifier = Modifier
+                    .padding(20.dp)
+                    .align(Alignment.CenterHorizontally)
+            ) {
+                Text(text = "Start Animation")
+            }
+        }
+    }
 
 
     enum class BoxPosition {
@@ -58,6 +109,7 @@ class Chapter38AnimationActivity : ComponentActivity() {
 
     /**
      * animateDpAsState를 이용한 움직임 애니메이션 처리
+     * - 추가로 [keyframes] 도 추가되었다.
      */
     @Composable
     fun MotionsDemo() {
@@ -69,7 +121,14 @@ class Chapter38AnimationActivity : ComponentActivity() {
                 BoxPosition.Start -> 0.dp
                 BoxPosition.End -> screenWidth - boxSideLength
             },
-            animationSpec = tween(500)
+            animationSpec = keyframes {
+                durationMillis = 1000 // 전체 애니메이션 시간
+                100.dp.at(10).with(LinearEasing) // 전체 1000 시간중 10에 100dp 만큼 이동
+                110.dp.at(500).with(FastOutSlowInEasing) // 전체 1000 시간중 500에 110dp 만큼 이동
+                200.dp.at(700).with(LinearOutSlowInEasing) // 전체 1000 시간중 700에 200dp 만큼 이동
+                //그러니깐 빠르게(10) 100까지 이동했다가 500까지 느리게 갔다가 700까지 200dp를 이동한다.
+            }
+//            animationSpec = tween(500)
         )
         Column() {
             Box(
