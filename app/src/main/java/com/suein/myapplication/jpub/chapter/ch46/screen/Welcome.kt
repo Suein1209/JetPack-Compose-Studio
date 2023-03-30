@@ -22,7 +22,7 @@ fun Welcome(navController: NavController, userName: String?) {
             Spacer(modifier = Modifier.size(30.dp))
             Button(onClick = {
                 navController.navigate(NavRoute.Profile.rout) {
-                    popUpTo(NavRoute.Home.rout)
+                    popUpTo(NavRoute.Home.rout) // 자기 자신(Profile)을 날리면서 Home으로 방향을 가리킨다
                 }
             }) {
                 Text(text = "Set up your Profile")
