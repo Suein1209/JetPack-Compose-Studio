@@ -30,6 +30,7 @@
         <activity android:name=".toto.TotoStudyActivity" />
         <activity android:name=".jpub.chapter.Chapter38AnimationActivity" />
         <activity android:name=".jpub.chapter.ch41.Chapter41TestViewModelActivity" />
+        <activity android:name=".jpub.chapter.ch46.Chapter46NavigationActivity" />
         <activity android:name=".jpub.JpubHubActivity" />
     </application>
 

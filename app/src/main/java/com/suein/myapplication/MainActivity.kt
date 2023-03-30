@@ -15,12 +15,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.suein.myapplication.jpub.JpubHubActivity
 import com.suein.myapplication.jpub.chapter.ch41.Chapter41TestViewModelActivity
+import com.suein.myapplication.jpub.chapter.ch46.Chapter46NavigationActivity
 import com.suein.myapplication.toto.TotoStudyActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startActivity(Intent(this, Chapter41TestViewModelActivity::class.java))
+        startActivity(Intent(this, Chapter46NavigationActivity::class.java))
 //        setContent {
 //            StudyBooksTitleList()
 //        }

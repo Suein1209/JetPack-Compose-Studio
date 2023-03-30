@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.suein.myapplication.jpub.chapter.Chapter38AnimationActivity
 import com.suein.myapplication.jpub.chapter.ch41.Chapter41TestViewModelActivity
+import com.suein.myapplication.jpub.chapter.ch46.Chapter46NavigationActivity
 
 @Suppress("SpellCheckingInspection")
 class JpubHubActivity : ComponentActivity() {
@@ -39,6 +40,13 @@ class JpubHubActivity : ComponentActivity() {
             }) {
                 Text(text = "Chapter 41 온도 입력 컴포저블 구현하기")
             }
+
+            Button(modifier = Modifier.padding(10.dp), onClick = {
+                startActivity(Intent(this@JpubHubActivity, Chapter46NavigationActivity::class.java))
+            }) {
+                Text(text = "Chapter 46 컴포즈 내비게이션 튜토리얼")
+            }
+
         }
     }
 
