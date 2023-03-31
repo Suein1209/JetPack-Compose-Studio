@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.suein.myapplication.jpub.chapter.Chapter38AnimationActivity
 import com.suein.myapplication.jpub.chapter.ch41.Chapter41TestViewModelActivity
 import com.suein.myapplication.jpub.chapter.ch46.Chapter46NavigationActivity
+import com.suein.myapplication.jpub.chapter.ch47.Chapter47BottomNavigationMainActivity
 
 @Suppress("SpellCheckingInspection")
 class JpubHubActivity : ComponentActivity() {
@@ -45,6 +46,12 @@ class JpubHubActivity : ComponentActivity() {
                 startActivity(Intent(this@JpubHubActivity, Chapter46NavigationActivity::class.java))
             }) {
                 Text(text = "Chapter 46 컴포즈 내비게이션 튜토리얼")
+            }
+
+            Button(modifier = Modifier.padding(10.dp), onClick = {
+                startActivity(Intent(this@JpubHubActivity, Chapter47BottomNavigationMainActivity::class.java))
+            }) {
+                Text(text = "Chapter 47 하단 내비게이션 바 튜토리얼")
             }
 
         }
