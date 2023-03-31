@@ -16,6 +16,7 @@ import com.suein.myapplication.jpub.chapter.Chapter38AnimationActivity
 import com.suein.myapplication.jpub.chapter.ch41.Chapter41TestViewModelActivity
 import com.suein.myapplication.jpub.chapter.ch46.Chapter46NavigationActivity
 import com.suein.myapplication.jpub.chapter.ch47.Chapter47BottomNavigationMainActivity
+import com.suein.myapplication.jpub.chapter.ch48.Chapter48GestureActivity
 
 @Suppress("SpellCheckingInspection")
 class JpubHubActivity : ComponentActivity() {
@@ -52,6 +53,12 @@ class JpubHubActivity : ComponentActivity() {
                 startActivity(Intent(this@JpubHubActivity, Chapter47BottomNavigationMainActivity::class.java))
             }) {
                 Text(text = "Chapter 47 하단 내비게이션 바 튜토리얼")
+            }
+
+            Button(modifier = Modifier.padding(10.dp), onClick = {
+                startActivity(Intent(this@JpubHubActivity, Chapter48GestureActivity::class.java))
+            }) {
+                Text(text = "Chapter 48 제스쳐 감지하기")
             }
 
         }

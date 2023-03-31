@@ -17,12 +17,13 @@ import com.suein.myapplication.jpub.JpubHubActivity
 import com.suein.myapplication.jpub.chapter.ch41.Chapter41TestViewModelActivity
 import com.suein.myapplication.jpub.chapter.ch46.Chapter46NavigationActivity
 import com.suein.myapplication.jpub.chapter.ch47.Chapter47BottomNavigationMainActivity
+import com.suein.myapplication.jpub.chapter.ch48.Chapter48GestureActivity
 import com.suein.myapplication.toto.TotoStudyActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startActivity(Intent(this, Chapter47BottomNavigationMainActivity::class.java))
+        startActivity(Intent(this, Chapter48GestureActivity::class.java))
 //        setContent {
 //            StudyBooksTitleList()
 //        }
