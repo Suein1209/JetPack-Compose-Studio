@@ -33,6 +33,7 @@
         <activity android:name=".jpub.chapter.ch46.Chapter46NavigationActivity" />
         <activity android:name=".jpub.chapter.ch47.Chapter47BottomNavigationMainActivity" />
         <activity android:name=".jpub.chapter.ch48.Chapter48GestureActivity" />
+        <activity android:name=".jpub.chapter.ch49.Chapter49SwipeActivity" />
         <activity android:name=".jpub.JpubHubActivity" />
     </application>
 

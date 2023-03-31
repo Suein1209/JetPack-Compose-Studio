@@ -17,6 +17,7 @@ import com.suein.myapplication.jpub.chapter.ch41.Chapter41TestViewModelActivity
 import com.suein.myapplication.jpub.chapter.ch46.Chapter46NavigationActivity
 import com.suein.myapplication.jpub.chapter.ch47.Chapter47BottomNavigationMainActivity
 import com.suein.myapplication.jpub.chapter.ch48.Chapter48GestureActivity
+import com.suein.myapplication.jpub.chapter.ch49.Chapter49SwipeActivity
 
 @Suppress("SpellCheckingInspection")
 class JpubHubActivity : ComponentActivity() {
@@ -61,6 +62,11 @@ class JpubHubActivity : ComponentActivity() {
                 Text(text = "Chapter 48 제스쳐 감지하기")
             }
 
+            Button(modifier = Modifier.padding(10.dp), onClick = {
+                startActivity(Intent(this@JpubHubActivity, Chapter49SwipeActivity::class.java))
+            }) {
+                Text(text = "Chapter 49 스와이프 제스처 감지하기")
+            }
         }
     }
 
