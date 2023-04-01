@@ -18,6 +18,7 @@ import com.suein.myapplication.jpub.chapter.ch46.Chapter46NavigationActivity
 import com.suein.myapplication.jpub.chapter.ch47.Chapter47BottomNavigationMainActivity
 import com.suein.myapplication.jpub.chapter.ch48.Chapter48GestureActivity
 import com.suein.myapplication.jpub.chapter.ch49.Chapter49SwipeActivity
+import com.suein.myapplication.jpub.chapter.ch51.Chapter51SharedFlowDemoActivity
 
 @Suppress("SpellCheckingInspection")
 class JpubHubActivity : ComponentActivity() {
@@ -66,6 +67,12 @@ class JpubHubActivity : ComponentActivity() {
                 startActivity(Intent(this@JpubHubActivity, Chapter49SwipeActivity::class.java))
             }) {
                 Text(text = "Chapter 49 스와이프 제스처 감지하기")
+            }
+
+            Button(modifier = Modifier.padding(10.dp), onClick = {
+                startActivity(Intent(this@JpubHubActivity, Chapter51SharedFlowDemoActivity::class.java))
+            }) {
+                Text(text = "Chapter 51 젯팩 컴포즈 셰어드플로 튜토리얼")
             }
         }
     }
