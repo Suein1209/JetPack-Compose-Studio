@@ -20,12 +20,13 @@ import com.suein.myapplication.jpub.chapter.ch47.Chapter47BottomNavigationMainAc
 import com.suein.myapplication.jpub.chapter.ch48.Chapter48GestureActivity
 import com.suein.myapplication.jpub.chapter.ch49.Chapter49SwipeActivity
 import com.suein.myapplication.jpub.chapter.ch51.Chapter51SharedFlowDemoActivity
+import com.suein.myapplication.test.fragmentnav.TestNaviFragmentActivity
 import com.suein.myapplication.toto.TotoStudyActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startActivity(Intent(this, Chapter51SharedFlowDemoActivity::class.java))
+        startActivity(Intent(this, TestNaviFragmentActivity::class.java))
 //        setContent {
 //            StudyBooksTitleList()
 //        }
