@@ -3,6 +3,7 @@ package com.suein.myapplication.test.fragmentnav
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.fragment.app.FragmentActivity
+import com.suein.myapplication.R
 import com.suein.myapplication.databinding.NaviFragmnetActivityBinding
 
 /**
@@ -10,12 +11,19 @@ import com.suein.myapplication.databinding.NaviFragmnetActivityBinding
  */
 class TestNaviFragmentActivity : FragmentActivity() {
 
-    private lateinit var binding : NaviFragmnetActivityBinding
+    private lateinit var binding: NaviFragmnetActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = NaviFragmnetActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val fragmentMgr = supportFragmentManager
+        val fragTransaction = fragmentMgr.beginTransaction()
+        fragTransaction.add(R.id.category_layout, TestNaviFragment())
+        fragTransaction.commit()
+
     }
+
 
 }
